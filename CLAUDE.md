@@ -76,4 +76,4 @@ When a skill is invoked as a plugin, it is namespaced as `<plugin-name>:<skill-n
 ## Important constraints
 
 - **No trade execution.** All advice in this skill is read-only analysis. Never generate code that places trades.
-- All market data MUST come from the Funda AI API (`finance-data-providers:funda-data` skill). Do not substitute yfinance, web search, or guesses when Funda data is available.
+- **Market data priority:** For options chains and stock quotes, use the TradingView desktop reader (`finance-data-providers:tradingview-reader` skill) FIRST. Fall back to the Funda AI API (`finance-data-providers:funda-data` skill) for data TradingView cannot provide (fundamentals, filings, transcripts, analyst estimates, options flow/GEX, supply chain, sentiment, Polymarket, congressional trades, economics, etc.). Do not substitute yfinance, web search, or guesses.
